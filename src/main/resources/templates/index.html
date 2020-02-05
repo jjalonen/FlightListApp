@@ -37,9 +37,9 @@
 
     <form th:object="${flight} "th:action="@{save}" action="#" method="POST">
         <div class="form-group">
-            <input type="text" required="required" placeholder="Departure Time" th:field="${flight.depTime}"/>
-            <input type="text" required="required" placeholder="Destination" th:field="${flight.destination}"/>
-            <input type="text" placeholder="Gate" th:field="${flight.gate}"/>
+            <input type="text" required="required" placeholder="Departure Time" th:maxlength="5" th:field="${flight.depTime}"/>
+            <input type="text" required="required" placeholder="Destination" th:maxlength="30" th:field="${flight.destination}"/>
+            <input type="text" placeholder="Gate" th:maxlength="5" th:field="${flight.gate}"/>
             <select th:field="*{status}">
                 <option th:each="status: ${statuses}" th:value="${status.statusId}" th:text="${status.name}" />
             </select>
