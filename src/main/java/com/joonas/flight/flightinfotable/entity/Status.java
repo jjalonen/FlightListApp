@@ -1,21 +1,16 @@
 package com.joonas.flight.flightinfotable.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long statusId;
+    private Long status_id;
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "status")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "status")
     private List<Flight> flights;
 
     public Status() {
@@ -28,11 +23,11 @@ public class Status {
     }
 
     public Long getStatusId() {
-        return statusId;
+        return status_id;
     }
 
-    public void setStatusId(Long statusId) {
-        this.statusId = statusId;
+    public void setStatusId(Long status_id) {
+        this.status_id = status_id;
     }
 
     public String getName() {
@@ -53,6 +48,6 @@ public class Status {
 
     @Override
     public String toString() {
-        return "Status [statusId=" + statusId + ", name=" + name + "]";
+        return "Status [statusId=" + status_id + ", name=" + name + "]";
     }
 }
