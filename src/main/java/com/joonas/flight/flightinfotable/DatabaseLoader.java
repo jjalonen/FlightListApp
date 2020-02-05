@@ -18,6 +18,5 @@ public class DatabaseLoader implements CommandLineRunner {
     public void run(String... strings) throws Exception {
         this.repository.save(new Flight("10:20", "New York", "07"));
         this.repository.save(new Flight("10:40", "Milan", "21"));
-        this.repository.save(new Flight("12:30", "Tokyo", "23"));
     }
 }

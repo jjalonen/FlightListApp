@@ -1,15 +1,56 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
-<head lang="en">
-    <meta charset="UTF-8"/>
-    <title>ReactJS + Spring Data REST</title>
-    <link rel="stylesheet" href="/main.css" />
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Flight List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" />
+
+    <style>
+        tr {
+            text-align: center;
+        }
+
+        h1 {
+            padding-top: 20px;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+
+        table {
+            font-size: large;
+            background-color: rgb(249, 249, 249);
+            border-radius: 15px 15px 15px 15px;
+        }
+
+    </style>
+
 </head>
+
 <body>
 
-<div id="react"></div>
+    <div class="container">
+        <h1>DEPARTURES</h1>
 
-<script src="built/bundle.js"></script>
+        <table class="table">
+            <tr>
+                <th>TIME</th>
+                <th>DESTINATION</th>
+                <th>GATE</th>
+
+            </tr>
+            <tr th:each="flight : ${flights}">
+                <td th:text="${flight.depTime}"></td>
+                <td th:text="${flight.destination}"></td>
+                <td th:text="${flight.gate}"></td>
+
+            </tr>
+        </table>
+
+        <a href="/addflight" class="btn btn-success">Add Flight</a>
+
+    </div>
 
 </body>
 </html>

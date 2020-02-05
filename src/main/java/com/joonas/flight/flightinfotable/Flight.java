@@ -67,7 +67,7 @@ public class Flight {
         return gate;
     }
 
-    public void setDescription(String gate) {
+    public void setGate(String gate) {
         this.gate = gate;
     }
 
