@@ -1,4 +1,4 @@
-package com.joonas.flight.flightinfotable;
+package com.joonas.flight.flightinfotable.controller;
 
 import com.joonas.flight.flightinfotable.entity.Flight;
 import com.joonas.flight.flightinfotable.repository.AirportRepository;
