@@ -3,22 +3,22 @@ package com.joonas.flight.flightinfotable.entity;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Airport {
 
-    private @Id
-    @GeneratedValue Long id;
-    private String airPortName;
-    private String city;
+    @Id
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    private Long airport_id;
+    private String destination;
     private String country;
 
-    private Airport() {}
+    public Airport() {}
 
-    public Airport(String airPortName, String city, String country) {
-        this.airPortName = airPortName;
-        this.city = city;
+    public Airport(String destination, String country) {
+        this.destination = destination;
         this.country = country;
     }
 
@@ -27,40 +27,31 @@ public class Airport {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Airport airport = (Airport) o;
-        return Objects.equals(id, airport.id) &&
-                Objects.equals(airPortName, airport.airPortName) &&
-                Objects.equals(city, airport.city) &&
+        return Objects.equals(airport_id, airport.airport_id) &&
+                Objects.equals(destination, airport.destination) &&
                 Objects.equals(country, airport.country);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, airPortName, city, country);
+        return Objects.hash(airport_id, country);
     }
 
     public Long getId() {
-        return id;
+        return airport_id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(Long airport_id) {
+        this.airport_id = airport_id;
     }
 
-    public String getAirPortName() {
-        return airPortName;
+    public String getDestination() {
+        return destination;
     }
 
-    public void setAirPortName(String airPortName) {
-        this.airPortName = airPortName;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+    public void setDestination(String destination) {
+        this.destination = destination;
     }
 
     public String getCountry() {
@@ -74,9 +65,7 @@ public class Airport {
     @Override
     public String toString() {
         return "Airport{" +
-                "id=" + id +
-                ", airPortName='" + airPortName + '\'' +
-                ", city='" + city + '\'' +
+                "airport_id=" + airport_id +
                 ", country'" + country + '\'' +
                 '}';
     }

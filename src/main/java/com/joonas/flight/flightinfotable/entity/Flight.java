@@ -10,7 +10,7 @@ public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long flight_id;
+    private Long id;
     private String depTime;
     private String destination;
     private String gate;
@@ -19,6 +19,7 @@ public class Flight {
     @JsonIgnore
 
     @JoinColumn(name = "status_id")
+
     private Status status;
 
     public Flight() {
@@ -37,7 +38,7 @@ public class Flight {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Flight flight = (Flight) o;
-        return Objects.equals(flight_id, flight.flight_id) &&
+        return Objects.equals(id, flight.id) &&
                 Objects.equals(depTime, flight.depTime) &&
                 Objects.equals(destination, flight.destination) &&
                 Objects.equals(gate, flight.gate);
@@ -46,15 +47,15 @@ public class Flight {
     @Override
     public int hashCode() {
 
-        return Objects.hash(flight_id, depTime, destination, gate);
+        return Objects.hash(id, depTime, destination, gate);
     }
 
     public Long getId() {
-        return flight_id;
+        return id;
     }
 
-    public void setId(Long flight_id) {
-        this.flight_id = flight_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getDepTime() {
@@ -92,13 +93,13 @@ public class Flight {
     @Override
     public String toString() {
         if (this.status != null)
-            return "Flight [flight_id=" + flight_id +
+            return "Flight [id=" + id +
                     ", depTime='" + depTime + '\'' +
                     ", destination='" + destination + '\'' +
                     ", gate='" + gate + '\'' +
                     ']' + this.getStatus() + ']';
         else
-            return "Flight [flight_id=" + flight_id +
+            return "Flight [id=" + id +
                     ", depTime='" + depTime + '\'' +
                     ", destination='" + destination + '\'' +
                     ", gate='" + gate + '\'' +
