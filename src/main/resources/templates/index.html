@@ -18,6 +18,11 @@
             text-align: center;
         }
 
+        form {
+            margin-top: 100px;
+            text-align: center;
+        }
+
         table {
             font-size: large;
             background-color: rgb(249, 249, 249);
@@ -29,6 +34,15 @@
 </head>
 
 <body>
+
+    <form th:action="@{/addFlight}" th:object="${flight}" method="POST">
+        <div class="form-group">
+            <input type="text" placeholder="Departure Time" th:field="${flight.depTime}"/>
+            <input type="text" placeholder="Destination" th:field="${flight.destination}"/>
+            <input type="text" placeholder="Gate" th:field="${flight.gate}"/>
+        </div>
+        <input type="Submit" class="btn btn-success" th:value="'Add Flight'"/>
+    </form>
 
     <div class="container">
         <h1>DEPARTURES</h1>
@@ -44,11 +58,8 @@
                 <td th:text="${flight.depTime}"></td>
                 <td th:text="${flight.destination}"></td>
                 <td th:text="${flight.gate}"></td>
-
             </tr>
         </table>
-
-        <a href="/addflight" class="btn btn-success">Add Flight</a>
 
     </div>
 

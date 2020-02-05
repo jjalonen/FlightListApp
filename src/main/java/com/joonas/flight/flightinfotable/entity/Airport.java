@@ -1,4 +1,4 @@
-package com.joonas.flight.flightinfotable;
+package com.joonas.flight.flightinfotable.entity;
 
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -11,15 +11,13 @@ public class Airport {
     private @Id
     @GeneratedValue Long id;
     private String airPortName;
-    private String address;
     private String city;
     private String country;
 
     private Airport() {}
 
-    public Airport(String airPortName, String address, String city, String country) {
+    public Airport(String airPortName, String city, String country) {
         this.airPortName = airPortName;
-        this.address = address;
         this.city = city;
         this.country = country;
     }
@@ -31,7 +29,6 @@ public class Airport {
         Airport airport = (Airport) o;
         return Objects.equals(id, airport.id) &&
                 Objects.equals(airPortName, airport.airPortName) &&
-                Objects.equals(address, airport.address) &&
                 Objects.equals(city, airport.city) &&
                 Objects.equals(country, airport.country);
     }
@@ -39,7 +36,7 @@ public class Airport {
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, airPortName, address, city, country);
+        return Objects.hash(id, airPortName, city, country);
     }
 
     public Long getId() {
@@ -56,14 +53,6 @@ public class Airport {
 
     public void setAirPortName(String airPortName) {
         this.airPortName = airPortName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getCity() {
@@ -87,7 +76,6 @@ public class Airport {
         return "Airport{" +
                 "id=" + id +
                 ", airPortName='" + airPortName + '\'' +
-                ", address='" + address + '\'' +
                 ", city='" + city + '\'' +
                 ", country'" + country + '\'' +
                 '}';

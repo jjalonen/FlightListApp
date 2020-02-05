@@ -1,25 +1,35 @@
-package com.joonas.flight.flightinfotable;
+package com.joonas.flight.flightinfotable.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Flight {
 
-    private @Id
-    @GeneratedValue Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String depTime;
     private String destination;
     private String gate;
 
-    private Flight() {}
+    @ManyToOne
+    @JsonIgnore
 
-    public Flight(String depTime, String destination, String gate) {
+    @JoinColumn(name = "statusId")
+    private Status status;
+
+    public Flight() {
+        super();
+    }
+
+    public Flight(String depTime, String destination, String gate, Status status) {
         this.depTime = depTime;
         this.destination = destination;
         this.gate = gate;
+        this.status = status;
     }
 
     @Override
@@ -71,13 +81,28 @@ public class Flight {
         this.gate = gate;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Flight{" +
-                "id=" + id +
-                ", depTime='" + depTime + '\'' +
-                ", destination='" + destination + '\'' +
-                ", gate='" + gate + '\'' +
-                '}';
+        if (this.status != null)
+            return "Flight [id=" + id +
+                    ", depTime='" + depTime + '\'' +
+                    ", destination='" + destination + '\'' +
+                    ", gate='" + gate + '\'' +
+                    ']' + this.getStatus() + ']';
+        else
+            return "Flight [id=" + id +
+                    ", depTime='" + depTime + '\'' +
+                    ", destination='" + destination + '\'' +
+                    ", gate='" + gate + '\'' +
+                    ']';
+
     }
 }
