@@ -35,13 +35,16 @@
 
 <body>
 
-    <form th:action="@{/addFlight}" th:object="${flight}" method="POST">
+    <form th:object="${flight} "th:action="@{save}" action="#" method="POST">
         <div class="form-group">
             <input type="text" required="required" placeholder="Departure Time" th:field="${flight.depTime}"/>
             <input type="text" required="required" placeholder="Destination" th:field="${flight.destination}"/>
             <input type="text" placeholder="Gate" th:field="${flight.gate}"/>
+            <select th:field="*{status}">
+                <option th:each="status: ${statuses}" th:value="${status.statusId}" th:text="${status.name}" />
+            </select>
         </div>
-        <input type="Submit" class="btn btn-success" th:value="'Add Flight'"/>
+        <input type="submit" class="btn btn-success" th:value="'Add Flight'"/>
     </form>
 
     <div class="container">
@@ -52,13 +55,13 @@
                 <th>TIME</th>
                 <th>DESTINATION</th>
                 <th>GATE</th>
-
+                <th>STATUS</th>
             </tr>
             <tr th:each="flight : ${flights}">
                 <td th:text="${flight.depTime}"></td>
                 <td th:text="${flight.destination}"></td>
                 <td th:text="${flight.gate}"></td>
-
+                <td th:text="${flight.status.name}"></td>
             </tr>
         </table>
 
