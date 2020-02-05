@@ -37,8 +37,8 @@
 
     <form th:action="@{/addFlight}" th:object="${flight}" method="POST">
         <div class="form-group">
-            <input type="text" placeholder="Departure Time" th:field="${flight.depTime}"/>
-            <input type="text" placeholder="Destination" th:field="${flight.destination}"/>
+            <input type="text" required="required" placeholder="Departure Time" th:field="${flight.depTime}"/>
+            <input type="text" required="required" placeholder="Destination" th:field="${flight.destination}"/>
             <input type="text" placeholder="Gate" th:field="${flight.gate}"/>
         </div>
         <input type="Submit" class="btn btn-success" th:value="'Add Flight'"/>
@@ -58,6 +58,7 @@
                 <td th:text="${flight.depTime}"></td>
                 <td th:text="${flight.destination}"></td>
                 <td th:text="${flight.gate}"></td>
+
             </tr>
         </table>
 
