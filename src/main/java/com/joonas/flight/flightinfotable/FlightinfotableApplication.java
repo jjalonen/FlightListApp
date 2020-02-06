@@ -1,11 +1,9 @@
 package com.joonas.flight.flightinfotable;
 
-import com.joonas.flight.flightinfotable.entity.Airport;
 import com.joonas.flight.flightinfotable.entity.Flight;
 import com.joonas.flight.flightinfotable.entity.Status;
 import com.joonas.flight.flightinfotable.repository.FlightRepository;
 import com.joonas.flight.flightinfotable.repository.StatusRepository;
-import com.joonas.flight.flightinfotable.repository.AirportRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +17,7 @@ public class FlightinfotableApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(FlightRepository repository, StatusRepository sRepository, AirportRepository aRepository) {
+	public CommandLineRunner demo(FlightRepository repository, StatusRepository sRepository) {
 		return (args) -> {
 
 			Status s1 = new Status();
